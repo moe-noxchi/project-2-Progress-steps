@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+
+:root {
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0;
+}
+
+
+* {
+    box-sizing: border-box;
+    /* it orginzise the margin and padding */
+}
+
+
+body {
+    background-color: #f6f7fb;
+    font-family: 'muli', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* centers the div */
+    height: 100vh;
+    overflow: hidden;
+    /* limits the content in the box and hides the rest of the content*/
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    /* we keep the text in the center */
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    /* we add flex box and put space between the numbers */
+    position: relative;
+    /* you place the content in a relative box */
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+.progress-container::before {
+    content: "";
+    /* when u use before or after you need to add content"" so it can work */
+    background-color: var(--line-border-empty);
+    position: absolute;
+    /* so this will be positioned in absolute in the above relative so it can aline perfectly */
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%); 
+    /* this one here it makes the line right in the middle of the numbers using Y */
+    height: 4px;
+    width: 100%;
+    /* here we play with the white line so the height is the blue line depth and width is how much it shrenks */
+    z-index: -1;
+    /*  we're telling the computer which things should be in front of other things on a webpage, just like stacking papers or blocks */
+}
+
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%); 
+    height: 4px;
+    width: 0%;
+    /* here we play with the blue line so the height is the blue line depth and width is how much it shrenks */
+    z-index: -1;
+    transition: 0.4s ease;
+    /* this will make the blue line go easily taking its time to reach to the numbers one by one, without it the blue line would just show up on numbers without animations */
+}
+
+.circle {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #e0e0e0;
+    transition: 0.4s ease;
+    /* gives animation to the circle */
+}
+
+.circle.active {
+    border-color: var(--line-border-fill);
+}
+
+.btn {
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    /* cursor: not-allowed; */
+}
